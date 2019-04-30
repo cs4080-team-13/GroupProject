@@ -143,7 +143,7 @@ Partial Class frmFinanceWizard
         Me.lsvMonthlySchedule.Location = New System.Drawing.Point(187, 55)
         Me.lsvMonthlySchedule.Name = "lsvMonthlySchedule"
         Me.lsvMonthlySchedule.Size = New System.Drawing.Size(556, 505)
-        Me.lsvMonthlySchedule.TabIndex = 4
+        Me.lsvMonthlySchedule.TabIndex = 7
         Me.lsvMonthlySchedule.UseCompatibleStateImageBehavior = False
         Me.lsvMonthlySchedule.View = System.Windows.Forms.View.Details
         '
@@ -179,19 +179,20 @@ Partial Class frmFinanceWizard
         Me.btnCalculate.Location = New System.Drawing.Point(21, 326)
         Me.btnCalculate.Name = "btnCalculate"
         Me.btnCalculate.Size = New System.Drawing.Size(149, 37)
-        Me.btnCalculate.TabIndex = 3
+        Me.btnCalculate.TabIndex = 6
         Me.btnCalculate.Text = "Calculate"
         Me.btnCalculate.UseVisualStyleBackColor = True
         '
         'cbMortgageTerm
         '
+        Me.cbMortgageTerm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
         Me.cbMortgageTerm.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbMortgageTerm.FormattingEnabled = True
         Me.cbMortgageTerm.Items.AddRange(New Object() {"5", "10", "15", "20", "25", "30"})
         Me.cbMortgageTerm.Location = New System.Drawing.Point(21, 279)
         Me.cbMortgageTerm.Name = "cbMortgageTerm"
         Me.cbMortgageTerm.Size = New System.Drawing.Size(121, 29)
-        Me.cbMortgageTerm.TabIndex = 2
+        Me.cbMortgageTerm.TabIndex = 5
         '
         'txtbxAnnualInterest
         '
@@ -199,7 +200,7 @@ Partial Class frmFinanceWizard
         Me.txtbxAnnualInterest.Location = New System.Drawing.Point(21, 217)
         Me.txtbxAnnualInterest.Name = "txtbxAnnualInterest"
         Me.txtbxAnnualInterest.Size = New System.Drawing.Size(129, 29)
-        Me.txtbxAnnualInterest.TabIndex = 1
+        Me.txtbxAnnualInterest.TabIndex = 4
         Me.txtbxAnnualInterest.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtbxDownPayment
@@ -208,7 +209,7 @@ Partial Class frmFinanceWizard
         Me.txtbxDownPayment.Location = New System.Drawing.Point(21, 156)
         Me.txtbxDownPayment.Name = "txtbxDownPayment"
         Me.txtbxDownPayment.Size = New System.Drawing.Size(129, 29)
-        Me.txtbxDownPayment.TabIndex = 1
+        Me.txtbxDownPayment.TabIndex = 3
         Me.txtbxDownPayment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtbxLoanFees
@@ -217,7 +218,7 @@ Partial Class frmFinanceWizard
         Me.txtbxLoanFees.Location = New System.Drawing.Point(21, 95)
         Me.txtbxLoanFees.Name = "txtbxLoanFees"
         Me.txtbxLoanFees.Size = New System.Drawing.Size(129, 29)
-        Me.txtbxLoanFees.TabIndex = 1
+        Me.txtbxLoanFees.TabIndex = 2
         Me.txtbxLoanFees.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtbxLoanAmount

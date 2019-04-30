@@ -37,29 +37,33 @@
             dblLoanFees = Double.Parse(txtbxLoanFees.Text)
             dblDownPaymentPercent = Double.Parse(txtbxDownPayment.Text)
             dblInterestRate = Double.Parse(txtbxAnnualInterest.Text)
-            intMortgageTerm = 20 ' = Integer.Parse(cbMortgageTerm.SelectedText)
+            intMortgageTerm = Integer.Parse(cbMortgageTerm.Text)
         Catch ex As Exception
             MsgBox("Please use only numerical digits", MsgBoxStyle.OkOnly, "Error")
             Return
         End Try
         'Begin calculating the montly payment, total interest paid, total paid
+        dblDownPaymentPercent = dblDownPaymentPercent / 100
+        dblInterestRate = dblInterestRate / 100
         Dim dblMonthlyPayment As Double
         Dim dblInterestPaid As Double = 0.0
         Dim dblTotalPaid As Double = 0.0
-        Dim dblMonthlyInterestRate As Double = dblInterestRate / 12
+        Dim dblMonthlyInterestRate As Double = (dblInterestRate / 12)
         Dim intMonths As Integer = intMortgageTerm * 12
         Dim dblBalance As Double
         dblLoanAmount = (dblLoanAmount + dblLoanFees) - (dblLoanAmount * dblDownPaymentPercent)
         For i As Integer = 1 To intMonths
             dblMonthlyPayment = dblLoanAmount * (dblMonthlyInterestRate * (1 + dblMonthlyInterestRate) ^ intMonths) / ((1 + dblMonthlyInterestRate) ^ intMonths - 1)
-            dblBalance = dblLoanAmount * (dblMonthlyInterestRate * (((1 + dblMonthlyInterestRate) ^ intMonths) - (1 + dblMonthlyInterestRate) ^ intMonths)) / ((1 + dblMonthlyInterestRate) ^ intMonths - 1)
+            dblBalance = dblLoanAmount * (dblMonthlyInterestRate * (((1 + dblMonthlyInterestRate) ^ intMonths) - (1 + dblMonthlyInterestRate) ^ dblMonthlyPayment)) / ((1 + dblMonthlyInterestRate) ^ intMonths - 1)
             dblInterestPaid = dblLoanAmount * dblMonthlyInterestRate
-            lsvMonthlySchedule.Items(i).SubItems.Add(i)
-            lsvMonthlySchedule.Items(i).SubItems.Add(dblLoanAmount)
-            lsvMonthlySchedule.Items(i).SubItems.Add(dblInterestPaid)
-            lsvMonthlySchedule.Items(i).SubItems.Add(dblMonthlyPayment)
-            lsvMonthlySchedule.Items(i).SubItems.Add(dblBalance)
+            Dim strMonthInfo(5) As String
+            strMonthInfo(0) = i.ToString
+            strMonthInfo(1) = dblLoanAmount
+            strMonthInfo(2) = dblInterestPaid
+            strMonthInfo(3) = dblMonthlyPayment
+            strMonthInfo(4) = dblBalance
+            lsvMonthlySchedule.Items.Add(New ListViewItem(strMonthInfo))
+            dblLoanAmount = dblBalance
         Next
-
     End Sub
 End Class
