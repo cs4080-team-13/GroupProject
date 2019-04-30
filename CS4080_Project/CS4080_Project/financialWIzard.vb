@@ -1,34 +1,26 @@
 ﻿Public Class frmFinanceWizard
 
-    Private Sub MonthCalendar1_DateChanged(sender As Object, e As DateRangeEventArgs) Handles MonthCalendar1.DateChanged
+    Private Sub MonthCalendar1_DateChanged(sender As Object, e As DateRangeEventArgs)
 
     End Sub
 
-    Private Sub btnCalendar_Click(sender As Object, e As EventArgs) Handles btnCalendar.Click
-        panelCalendar.Visible = True
+    Private Sub btnCalendar_Click(sender As Object, e As EventArgs)
         panelExpenseTracker.Visible = False
-        panelInvestmentTracker.Visible = False
         panelMortgageCalc.Visible = False
     End Sub
 
     Private Sub btnExpense_Click(sender As Object, e As EventArgs) Handles btnExpense.Click
-        panelCalendar.Visible = False
         panelExpenseTracker.Visible = True
-        panelInvestmentTracker.Visible = False
         panelMortgageCalc.Visible = False
     End Sub
 
-    Private Sub btnInvestment_Click(sender As Object, e As EventArgs) Handles btnInvestment.Click
-        panelCalendar.Visible = False
+    Private Sub btnInvestment_Click(sender As Object, e As EventArgs)
         panelExpenseTracker.Visible = False
-        panelInvestmentTracker.Visible = True
         panelMortgageCalc.Visible = False
     End Sub
 
     Private Sub btnMortgage_Click(sender As Object, e As EventArgs) Handles btnMortgage.Click
-        panelCalendar.Visible = False
         panelExpenseTracker.Visible = False
-        panelInvestmentTracker.Visible = False
         panelMortgageCalc.Visible = True
     End Sub
 
@@ -45,7 +37,7 @@
             dblLoanFees = Double.Parse(txtbxLoanFees.Text)
             dblDownPaymentPercent = Double.Parse(txtbxDownPayment.Text)
             dblInterestRate = Double.Parse(txtbxAnnualInterest.Text)
-            intMortgageTerm = Integer.Parse(cbMortgageTerm.SelectedText)
+            intMortgageTerm = 20 ' = Integer.Parse(cbMortgageTerm.SelectedText)
         Catch ex As Exception
             MsgBox("Please use only numerical digits", MsgBoxStyle.OkOnly, "Error")
             Return
@@ -56,8 +48,17 @@
         Dim dblTotalPaid As Double = 0.0
         Dim dblMonthlyInterestRate As Double = dblInterestRate / 12
         Dim intMonths As Integer = intMortgageTerm * 12
-        For i As Integer = 0 To intMonths
+        Dim dblBalance As Double
+        dblLoanAmount = (dblLoanAmount + dblLoanFees) - (dblLoanAmount * dblDownPaymentPercent)
+        For i As Integer = 1 To intMonths
             dblMonthlyPayment = dblLoanAmount * (dblMonthlyInterestRate * (1 + dblMonthlyInterestRate) ^ intMonths) / ((1 + dblMonthlyInterestRate) ^ intMonths - 1)
+            dblBalance = dblLoanAmount * (dblMonthlyInterestRate * (((1 + dblMonthlyInterestRate) ^ intMonths) - (1 + dblMonthlyInterestRate) ^ intMonths)) / ((1 + dblMonthlyInterestRate) ^ intMonths - 1)
+            dblInterestPaid = dblLoanAmount * dblMonthlyInterestRate
+            lsvMonthlySchedule.Items(i).SubItems.Add(i)
+            lsvMonthlySchedule.Items(i).SubItems.Add(dblLoanAmount)
+            lsvMonthlySchedule.Items(i).SubItems.Add(dblInterestPaid)
+            lsvMonthlySchedule.Items(i).SubItems.Add(dblMonthlyPayment)
+            lsvMonthlySchedule.Items(i).SubItems.Add(dblBalance)
         Next
 
     End Sub

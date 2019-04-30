@@ -22,77 +22,56 @@ Partial Class frmFinanceWizard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.btnCalendar = New System.Windows.Forms.Button()
         Me.btnExpense = New System.Windows.Forms.Button()
-        Me.btnInvestment = New System.Windows.Forms.Button()
         Me.btnMortgage = New System.Windows.Forms.Button()
         Me.tlpButtons = New System.Windows.Forms.TableLayoutPanel()
         Me.scMain = New System.Windows.Forms.SplitContainer()
         Me.panelMortgageCalc = New System.Windows.Forms.Panel()
+        Me.lsvMonthlySchedule = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnCalculate = New System.Windows.Forms.Button()
         Me.cbMortgageTerm = New System.Windows.Forms.ComboBox()
         Me.txtbxAnnualInterest = New System.Windows.Forms.TextBox()
+        Me.txtbxDownPayment = New System.Windows.Forms.TextBox()
         Me.txtbxLoanFees = New System.Windows.Forms.TextBox()
         Me.txtbxLoanAmount = New System.Windows.Forms.TextBox()
         Me.lblMortgageTerm = New System.Windows.Forms.Label()
         Me.lblAnnualInterest = New System.Windows.Forms.Label()
+        Me.lblDownPayment = New System.Windows.Forms.Label()
         Me.lblLoanFees = New System.Windows.Forms.Label()
+        Me.lblPaymentSchedule = New System.Windows.Forms.Label()
         Me.lblLoanAmount = New System.Windows.Forms.Label()
-        Me.panelInvestmentTracker = New System.Windows.Forms.Panel()
-        Me.lblInvestmentTracker = New System.Windows.Forms.Label()
         Me.panelExpenseTracker = New System.Windows.Forms.Panel()
         Me.lbExpenseTracker = New System.Windows.Forms.Label()
-        Me.panelCalendar = New System.Windows.Forms.Panel()
-        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
-        Me.lblDownPayment = New System.Windows.Forms.Label()
-        Me.txtbxDownPayment = New System.Windows.Forms.TextBox()
         Me.tlpButtons.SuspendLayout()
         CType(Me.scMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.scMain.Panel1.SuspendLayout()
         Me.scMain.Panel2.SuspendLayout()
         Me.scMain.SuspendLayout()
         Me.panelMortgageCalc.SuspendLayout()
-        Me.panelInvestmentTracker.SuspendLayout()
         Me.panelExpenseTracker.SuspendLayout()
-        Me.panelCalendar.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnCalendar
-        '
-        Me.btnCalendar.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCalendar.Location = New System.Drawing.Point(3, 3)
-        Me.btnCalendar.Name = "btnCalendar"
-        Me.btnCalendar.Size = New System.Drawing.Size(94, 89)
-        Me.btnCalendar.TabIndex = 0
-        Me.btnCalendar.Text = "Interactive Calendar"
-        Me.btnCalendar.UseVisualStyleBackColor = True
         '
         'btnExpense
         '
         Me.btnExpense.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExpense.Location = New System.Drawing.Point(3, 98)
+        Me.btnExpense.Location = New System.Drawing.Point(3, 3)
         Me.btnExpense.Name = "btnExpense"
-        Me.btnExpense.Size = New System.Drawing.Size(94, 89)
+        Me.btnExpense.Size = New System.Drawing.Size(94, 86)
         Me.btnExpense.TabIndex = 1
         Me.btnExpense.Text = "Expense Tracker"
         Me.btnExpense.UseVisualStyleBackColor = True
         '
-        'btnInvestment
-        '
-        Me.btnInvestment.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnInvestment.Location = New System.Drawing.Point(3, 193)
-        Me.btnInvestment.Name = "btnInvestment"
-        Me.btnInvestment.Size = New System.Drawing.Size(94, 89)
-        Me.btnInvestment.TabIndex = 2
-        Me.btnInvestment.Text = "Investment Tracker"
-        Me.btnInvestment.UseVisualStyleBackColor = True
-        '
         'btnMortgage
         '
         Me.btnMortgage.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMortgage.Location = New System.Drawing.Point(3, 288)
+        Me.btnMortgage.Location = New System.Drawing.Point(3, 95)
         Me.btnMortgage.Name = "btnMortgage"
-        Me.btnMortgage.Size = New System.Drawing.Size(94, 89)
+        Me.btnMortgage.Size = New System.Drawing.Size(94, 87)
         Me.btnMortgage.TabIndex = 3
         Me.btnMortgage.Text = "Mortgage Calculator"
         Me.btnMortgage.UseVisualStyleBackColor = True
@@ -101,42 +80,43 @@ Partial Class frmFinanceWizard
         '
         Me.tlpButtons.ColumnCount = 1
         Me.tlpButtons.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpButtons.Controls.Add(Me.btnCalendar, 0, 0)
-        Me.tlpButtons.Controls.Add(Me.btnMortgage, 0, 3)
-        Me.tlpButtons.Controls.Add(Me.btnExpense, 0, 1)
-        Me.tlpButtons.Controls.Add(Me.btnInvestment, 0, 2)
+        Me.tlpButtons.Controls.Add(Me.btnExpense, 0, 0)
+        Me.tlpButtons.Controls.Add(Me.btnMortgage, 0, 1)
         Me.tlpButtons.Location = New System.Drawing.Point(0, 0)
         Me.tlpButtons.Name = "tlpButtons"
-        Me.tlpButtons.RowCount = 5
-        Me.tlpButtons.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.tlpButtons.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.tlpButtons.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.tlpButtons.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.tlpButtons.RowCount = 2
+        Me.tlpButtons.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.tlpButtons.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.tlpButtons.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.tlpButtons.Size = New System.Drawing.Size(100, 400)
+        Me.tlpButtons.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.tlpButtons.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.tlpButtons.Size = New System.Drawing.Size(100, 185)
         Me.tlpButtons.TabIndex = 1
         '
         'scMain
         '
+        Me.scMain.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.scMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.scMain.Location = New System.Drawing.Point(0, 0)
         Me.scMain.Name = "scMain"
         '
         'scMain.Panel1
         '
+        Me.scMain.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
         Me.scMain.Panel1.Controls.Add(Me.tlpButtons)
         '
         'scMain.Panel2
         '
         Me.scMain.Panel2.Controls.Add(Me.panelMortgageCalc)
-        Me.scMain.Panel2.Controls.Add(Me.panelInvestmentTracker)
         Me.scMain.Panel2.Controls.Add(Me.panelExpenseTracker)
-        Me.scMain.Panel2.Controls.Add(Me.panelCalendar)
-        Me.scMain.Size = New System.Drawing.Size(800, 500)
-        Me.scMain.SplitterDistance = 100
+        Me.scMain.Size = New System.Drawing.Size(884, 661)
+        Me.scMain.SplitterDistance = 109
         Me.scMain.TabIndex = 2
         '
         'panelMortgageCalc
         '
+        Me.panelMortgageCalc.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.panelMortgageCalc.Controls.Add(Me.lsvMonthlySchedule)
         Me.panelMortgageCalc.Controls.Add(Me.btnCalculate)
         Me.panelMortgageCalc.Controls.Add(Me.cbMortgageTerm)
         Me.panelMortgageCalc.Controls.Add(Me.txtbxAnnualInterest)
@@ -147,12 +127,50 @@ Partial Class frmFinanceWizard
         Me.panelMortgageCalc.Controls.Add(Me.lblAnnualInterest)
         Me.panelMortgageCalc.Controls.Add(Me.lblDownPayment)
         Me.panelMortgageCalc.Controls.Add(Me.lblLoanFees)
+        Me.panelMortgageCalc.Controls.Add(Me.lblPaymentSchedule)
         Me.panelMortgageCalc.Controls.Add(Me.lblLoanAmount)
         Me.panelMortgageCalc.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelMortgageCalc.Location = New System.Drawing.Point(0, 0)
         Me.panelMortgageCalc.Name = "panelMortgageCalc"
-        Me.panelMortgageCalc.Size = New System.Drawing.Size(696, 500)
+        Me.panelMortgageCalc.Size = New System.Drawing.Size(771, 661)
         Me.panelMortgageCalc.TabIndex = 3
+        '
+        'lsvMonthlySchedule
+        '
+        Me.lsvMonthlySchedule.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lsvMonthlySchedule.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
+        Me.lsvMonthlySchedule.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lsvMonthlySchedule.Location = New System.Drawing.Point(187, 55)
+        Me.lsvMonthlySchedule.Name = "lsvMonthlySchedule"
+        Me.lsvMonthlySchedule.Size = New System.Drawing.Size(556, 505)
+        Me.lsvMonthlySchedule.TabIndex = 4
+        Me.lsvMonthlySchedule.UseCompatibleStateImageBehavior = False
+        Me.lsvMonthlySchedule.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "Months"
+        Me.ColumnHeader1.Width = 73
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Starting Balance"
+        Me.ColumnHeader2.Width = 134
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Interest"
+        Me.ColumnHeader3.Width = 110
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Payment"
+        Me.ColumnHeader4.Width = 125
+        '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Balance"
+        Me.ColumnHeader5.Width = 110
         '
         'btnCalculate
         '
@@ -183,6 +201,15 @@ Partial Class frmFinanceWizard
         Me.txtbxAnnualInterest.Size = New System.Drawing.Size(129, 29)
         Me.txtbxAnnualInterest.TabIndex = 1
         Me.txtbxAnnualInterest.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtbxDownPayment
+        '
+        Me.txtbxDownPayment.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtbxDownPayment.Location = New System.Drawing.Point(21, 156)
+        Me.txtbxDownPayment.Name = "txtbxDownPayment"
+        Me.txtbxDownPayment.Size = New System.Drawing.Size(129, 29)
+        Me.txtbxDownPayment.TabIndex = 1
+        Me.txtbxDownPayment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtbxLoanFees
         '
@@ -224,6 +251,17 @@ Partial Class frmFinanceWizard
         Me.lblAnnualInterest.TabIndex = 0
         Me.lblAnnualInterest.Text = "Annual Interest (%)"
         '
+        'lblDownPayment
+        '
+        Me.lblDownPayment.AutoSize = True
+        Me.lblDownPayment.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDownPayment.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.lblDownPayment.Location = New System.Drawing.Point(17, 132)
+        Me.lblDownPayment.Name = "lblDownPayment"
+        Me.lblDownPayment.Size = New System.Drawing.Size(142, 21)
+        Me.lblDownPayment.TabIndex = 0
+        Me.lblDownPayment.Text = "Down Payment (%)"
+        '
         'lblLoanFees
         '
         Me.lblLoanFees.AutoSize = True
@@ -234,6 +272,19 @@ Partial Class frmFinanceWizard
         Me.lblLoanFees.Size = New System.Drawing.Size(79, 21)
         Me.lblLoanFees.TabIndex = 0
         Me.lblLoanFees.Text = "Loan Fees"
+        '
+        'lblPaymentSchedule
+        '
+        Me.lblPaymentSchedule.AutoSize = True
+        Me.lblPaymentSchedule.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.lblPaymentSchedule.Font = New System.Drawing.Font("Segoe UI", 14.0!)
+        Me.lblPaymentSchedule.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.lblPaymentSchedule.Location = New System.Drawing.Point(183, 14)
+        Me.lblPaymentSchedule.Name = "lblPaymentSchedule"
+        Me.lblPaymentSchedule.Size = New System.Drawing.Size(166, 25)
+        Me.lblPaymentSchedule.TabIndex = 0
+        Me.lblPaymentSchedule.Text = "Payment Schedule"
+        Me.lblPaymentSchedule.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'lblLoanAmount
         '
@@ -246,33 +297,13 @@ Partial Class frmFinanceWizard
         Me.lblLoanAmount.TabIndex = 0
         Me.lblLoanAmount.Text = "Loan Amount"
         '
-        'panelInvestmentTracker
-        '
-        Me.panelInvestmentTracker.Controls.Add(Me.lblInvestmentTracker)
-        Me.panelInvestmentTracker.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelInvestmentTracker.Location = New System.Drawing.Point(0, 0)
-        Me.panelInvestmentTracker.Name = "panelInvestmentTracker"
-        Me.panelInvestmentTracker.Size = New System.Drawing.Size(696, 500)
-        Me.panelInvestmentTracker.TabIndex = 2
-        '
-        'lblInvestmentTracker
-        '
-        Me.lblInvestmentTracker.AutoSize = True
-        Me.lblInvestmentTracker.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblInvestmentTracker.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.lblInvestmentTracker.Location = New System.Drawing.Point(40, 40)
-        Me.lblInvestmentTracker.Name = "lblInvestmentTracker"
-        Me.lblInvestmentTracker.Size = New System.Drawing.Size(141, 21)
-        Me.lblInvestmentTracker.TabIndex = 1
-        Me.lblInvestmentTracker.Text = "Investment Tracker"
-        '
         'panelExpenseTracker
         '
         Me.panelExpenseTracker.Controls.Add(Me.lbExpenseTracker)
         Me.panelExpenseTracker.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelExpenseTracker.Location = New System.Drawing.Point(0, 0)
         Me.panelExpenseTracker.Name = "panelExpenseTracker"
-        Me.panelExpenseTracker.Size = New System.Drawing.Size(696, 500)
+        Me.panelExpenseTracker.Size = New System.Drawing.Size(771, 661)
         Me.panelExpenseTracker.TabIndex = 1
         '
         'lbExpenseTracker
@@ -286,48 +317,12 @@ Partial Class frmFinanceWizard
         Me.lbExpenseTracker.TabIndex = 0
         Me.lbExpenseTracker.Text = "Expense Tracker"
         '
-        'panelCalendar
-        '
-        Me.panelCalendar.Controls.Add(Me.MonthCalendar1)
-        Me.panelCalendar.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelCalendar.Location = New System.Drawing.Point(0, 0)
-        Me.panelCalendar.Name = "panelCalendar"
-        Me.panelCalendar.Size = New System.Drawing.Size(696, 500)
-        Me.panelCalendar.TabIndex = 0
-        '
-        'MonthCalendar1
-        '
-        Me.MonthCalendar1.CalendarDimensions = New System.Drawing.Size(2, 2)
-        Me.MonthCalendar1.Location = New System.Drawing.Point(5, 3)
-        Me.MonthCalendar1.Name = "MonthCalendar1"
-        Me.MonthCalendar1.TabIndex = 4
-        '
-        'lblDownPayment
-        '
-        Me.lblDownPayment.AutoSize = True
-        Me.lblDownPayment.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDownPayment.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lblDownPayment.Location = New System.Drawing.Point(17, 132)
-        Me.lblDownPayment.Name = "lblDownPayment"
-        Me.lblDownPayment.Size = New System.Drawing.Size(142, 21)
-        Me.lblDownPayment.TabIndex = 0
-        Me.lblDownPayment.Text = "Down Payment (%)"
-        '
-        'txtbxDownPayment
-        '
-        Me.txtbxDownPayment.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbxDownPayment.Location = New System.Drawing.Point(21, 156)
-        Me.txtbxDownPayment.Name = "txtbxDownPayment"
-        Me.txtbxDownPayment.Size = New System.Drawing.Size(129, 29)
-        Me.txtbxDownPayment.TabIndex = 1
-        Me.txtbxDownPayment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
         'frmFinanceWizard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DimGray
-        Me.ClientSize = New System.Drawing.Size(784, 461)
+        Me.ClientSize = New System.Drawing.Size(884, 661)
         Me.Controls.Add(Me.scMain)
         Me.Name = "frmFinanceWizard"
         Me.Text = "Finance Wizard"
@@ -338,23 +333,15 @@ Partial Class frmFinanceWizard
         Me.scMain.ResumeLayout(False)
         Me.panelMortgageCalc.ResumeLayout(False)
         Me.panelMortgageCalc.PerformLayout()
-        Me.panelInvestmentTracker.ResumeLayout(False)
-        Me.panelInvestmentTracker.PerformLayout()
         Me.panelExpenseTracker.ResumeLayout(False)
         Me.panelExpenseTracker.PerformLayout()
-        Me.panelCalendar.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents btnCalendar As Button
     Friend WithEvents btnExpense As Button
-    Friend WithEvents btnInvestment As Button
     Friend WithEvents btnMortgage As Button
     Friend WithEvents tlpButtons As TableLayoutPanel
     Friend WithEvents scMain As SplitContainer
-    Friend WithEvents panelCalendar As Panel
-    Friend WithEvents MonthCalendar1 As MonthCalendar
     Friend WithEvents panelMortgageCalc As Panel
     Friend WithEvents txtbxAnnualInterest As TextBox
     Friend WithEvents txtbxLoanFees As TextBox
@@ -363,12 +350,17 @@ Partial Class frmFinanceWizard
     Friend WithEvents lblAnnualInterest As Label
     Friend WithEvents lblLoanFees As Label
     Friend WithEvents lblLoanAmount As Label
-    Friend WithEvents panelInvestmentTracker As Panel
     Friend WithEvents panelExpenseTracker As Panel
     Friend WithEvents cbMortgageTerm As ComboBox
-    Friend WithEvents lblInvestmentTracker As Label
     Friend WithEvents lbExpenseTracker As Label
     Friend WithEvents btnCalculate As Button
     Friend WithEvents txtbxDownPayment As TextBox
     Friend WithEvents lblDownPayment As Label
+    Friend WithEvents lsvMonthlySchedule As ListView
+    Friend WithEvents ColumnHeader1 As ColumnHeader
+    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents ColumnHeader3 As ColumnHeader
+    Friend WithEvents ColumnHeader4 As ColumnHeader
+    Friend WithEvents ColumnHeader5 As ColumnHeader
+    Friend WithEvents lblPaymentSchedule As Label
 End Class
