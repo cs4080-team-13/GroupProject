@@ -36,12 +36,10 @@ Partial Class frmFinanceWizard
         Me.btnCalculate = New System.Windows.Forms.Button()
         Me.cbMortgageTerm = New System.Windows.Forms.ComboBox()
         Me.txtbxAnnualInterest = New System.Windows.Forms.TextBox()
-        Me.txtbxDownPayment = New System.Windows.Forms.TextBox()
         Me.txtbxLoanFees = New System.Windows.Forms.TextBox()
         Me.txtbxLoanAmount = New System.Windows.Forms.TextBox()
         Me.lblMortgageTerm = New System.Windows.Forms.Label()
         Me.lblAnnualInterest = New System.Windows.Forms.Label()
-        Me.lblDownPayment = New System.Windows.Forms.Label()
         Me.lblLoanFees = New System.Windows.Forms.Label()
         Me.lblPaymentSchedule = New System.Windows.Forms.Label()
         Me.lblLoanAmount = New System.Windows.Forms.Label()
@@ -72,7 +70,7 @@ Partial Class frmFinanceWizard
         Me.btnMortgage.Location = New System.Drawing.Point(3, 95)
         Me.btnMortgage.Name = "btnMortgage"
         Me.btnMortgage.Size = New System.Drawing.Size(94, 87)
-        Me.btnMortgage.TabIndex = 3
+        Me.btnMortgage.TabIndex = 2
         Me.btnMortgage.Text = "Mortgage Calculator"
         Me.btnMortgage.UseVisualStyleBackColor = True
         '
@@ -120,12 +118,10 @@ Partial Class frmFinanceWizard
         Me.panelMortgageCalc.Controls.Add(Me.btnCalculate)
         Me.panelMortgageCalc.Controls.Add(Me.cbMortgageTerm)
         Me.panelMortgageCalc.Controls.Add(Me.txtbxAnnualInterest)
-        Me.panelMortgageCalc.Controls.Add(Me.txtbxDownPayment)
         Me.panelMortgageCalc.Controls.Add(Me.txtbxLoanFees)
         Me.panelMortgageCalc.Controls.Add(Me.txtbxLoanAmount)
         Me.panelMortgageCalc.Controls.Add(Me.lblMortgageTerm)
         Me.panelMortgageCalc.Controls.Add(Me.lblAnnualInterest)
-        Me.panelMortgageCalc.Controls.Add(Me.lblDownPayment)
         Me.panelMortgageCalc.Controls.Add(Me.lblLoanFees)
         Me.panelMortgageCalc.Controls.Add(Me.lblPaymentSchedule)
         Me.panelMortgageCalc.Controls.Add(Me.lblLoanAmount)
@@ -140,10 +136,11 @@ Partial Class frmFinanceWizard
         Me.lsvMonthlySchedule.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lsvMonthlySchedule.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
         Me.lsvMonthlySchedule.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lsvMonthlySchedule.ForeColor = System.Drawing.Color.White
         Me.lsvMonthlySchedule.Location = New System.Drawing.Point(187, 55)
         Me.lsvMonthlySchedule.Name = "lsvMonthlySchedule"
         Me.lsvMonthlySchedule.Size = New System.Drawing.Size(556, 505)
-        Me.lsvMonthlySchedule.TabIndex = 7
+        Me.lsvMonthlySchedule.TabIndex = 6
         Me.lsvMonthlySchedule.UseCompatibleStateImageBehavior = False
         Me.lsvMonthlySchedule.View = System.Windows.Forms.View.Details
         '
@@ -176,10 +173,10 @@ Partial Class frmFinanceWizard
         '
         Me.btnCalculate.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCalculate.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnCalculate.Location = New System.Drawing.Point(21, 326)
+        Me.btnCalculate.Location = New System.Drawing.Point(21, 270)
         Me.btnCalculate.Name = "btnCalculate"
         Me.btnCalculate.Size = New System.Drawing.Size(149, 37)
-        Me.btnCalculate.TabIndex = 6
+        Me.btnCalculate.TabIndex = 5
         Me.btnCalculate.Text = "Calculate"
         Me.btnCalculate.UseVisualStyleBackColor = True
         '
@@ -189,28 +186,19 @@ Partial Class frmFinanceWizard
         Me.cbMortgageTerm.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbMortgageTerm.FormattingEnabled = True
         Me.cbMortgageTerm.Items.AddRange(New Object() {"5", "10", "15", "20", "25", "30"})
-        Me.cbMortgageTerm.Location = New System.Drawing.Point(21, 279)
+        Me.cbMortgageTerm.Location = New System.Drawing.Point(21, 223)
         Me.cbMortgageTerm.Name = "cbMortgageTerm"
         Me.cbMortgageTerm.Size = New System.Drawing.Size(121, 29)
-        Me.cbMortgageTerm.TabIndex = 5
+        Me.cbMortgageTerm.TabIndex = 4
         '
         'txtbxAnnualInterest
         '
         Me.txtbxAnnualInterest.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbxAnnualInterest.Location = New System.Drawing.Point(21, 217)
+        Me.txtbxAnnualInterest.Location = New System.Drawing.Point(21, 161)
         Me.txtbxAnnualInterest.Name = "txtbxAnnualInterest"
         Me.txtbxAnnualInterest.Size = New System.Drawing.Size(129, 29)
-        Me.txtbxAnnualInterest.TabIndex = 4
+        Me.txtbxAnnualInterest.TabIndex = 3
         Me.txtbxAnnualInterest.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtbxDownPayment
-        '
-        Me.txtbxDownPayment.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbxDownPayment.Location = New System.Drawing.Point(21, 156)
-        Me.txtbxDownPayment.Name = "txtbxDownPayment"
-        Me.txtbxDownPayment.Size = New System.Drawing.Size(129, 29)
-        Me.txtbxDownPayment.TabIndex = 3
-        Me.txtbxDownPayment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtbxLoanFees
         '
@@ -235,7 +223,7 @@ Partial Class frmFinanceWizard
         Me.lblMortgageTerm.AutoSize = True
         Me.lblMortgageTerm.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMortgageTerm.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lblMortgageTerm.Location = New System.Drawing.Point(17, 254)
+        Me.lblMortgageTerm.Location = New System.Drawing.Point(17, 198)
         Me.lblMortgageTerm.Name = "lblMortgageTerm"
         Me.lblMortgageTerm.Size = New System.Drawing.Size(167, 21)
         Me.lblMortgageTerm.TabIndex = 0
@@ -246,22 +234,11 @@ Partial Class frmFinanceWizard
         Me.lblAnnualInterest.AutoSize = True
         Me.lblAnnualInterest.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAnnualInterest.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lblAnnualInterest.Location = New System.Drawing.Point(17, 193)
+        Me.lblAnnualInterest.Location = New System.Drawing.Point(17, 137)
         Me.lblAnnualInterest.Name = "lblAnnualInterest"
         Me.lblAnnualInterest.Size = New System.Drawing.Size(142, 21)
         Me.lblAnnualInterest.TabIndex = 0
         Me.lblAnnualInterest.Text = "Annual Interest (%)"
-        '
-        'lblDownPayment
-        '
-        Me.lblDownPayment.AutoSize = True
-        Me.lblDownPayment.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDownPayment.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lblDownPayment.Location = New System.Drawing.Point(17, 132)
-        Me.lblDownPayment.Name = "lblDownPayment"
-        Me.lblDownPayment.Size = New System.Drawing.Size(142, 21)
-        Me.lblDownPayment.TabIndex = 0
-        Me.lblDownPayment.Text = "Down Payment (%)"
         '
         'lblLoanFees
         '
@@ -355,8 +332,6 @@ Partial Class frmFinanceWizard
     Friend WithEvents cbMortgageTerm As ComboBox
     Friend WithEvents lbExpenseTracker As Label
     Friend WithEvents btnCalculate As Button
-    Friend WithEvents txtbxDownPayment As TextBox
-    Friend WithEvents lblDownPayment As Label
     Friend WithEvents lsvMonthlySchedule As ListView
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents ColumnHeader2 As ColumnHeader

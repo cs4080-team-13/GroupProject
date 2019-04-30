@@ -1,4 +1,9 @@
 ﻿Public Class frmFinanceWizard
+    'Get all the data from the user
+    Dim decLoanAmount As Decimal
+    Dim decLoanFees As Decimal
+    Dim decInterestRate As Decimal
+    Dim intMortgageTerm As Integer
 
     Private Sub MonthCalendar1_DateChanged(sender As Object, e As DateRangeEventArgs)
 
@@ -26,44 +31,37 @@
 
     'Calculates the number mortgage payment amount per month for a specified loan amount, annual interest rate, and mortgage term
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
-        'Get all the data from the user
-        Dim dblLoanAmount As Double
-        Dim dblLoanFees As Double
-        Dim dblDownPaymentPercent As Double
-        Dim dblInterestRate As Double
-        Dim intMortgageTerm As Integer
+
         Try
-            dblLoanAmount = Double.Parse(txtbxLoanAmount.Text)
-            dblLoanFees = Double.Parse(txtbxLoanFees.Text)
-            dblDownPaymentPercent = Double.Parse(txtbxDownPayment.Text)
-            dblInterestRate = Double.Parse(txtbxAnnualInterest.Text)
+            decLoanAmount = Decimal.Parse(txtbxLoanAmount.Text)
+            decLoanFees = Double.Parse(txtbxLoanFees.Text)
+            decInterestRate = Double.Parse(txtbxAnnualInterest.Text)
             intMortgageTerm = Integer.Parse(cbMortgageTerm.Text)
         Catch ex As Exception
             MsgBox("Please use only numerical digits", MsgBoxStyle.OkOnly, "Error")
             Return
         End Try
         'Begin calculating the montly payment, total interest paid, total paid
-        dblDownPaymentPercent = dblDownPaymentPercent / 100
-        dblInterestRate = dblInterestRate / 100
-        Dim dblMonthlyPayment As Double
-        Dim dblInterestPaid As Double = 0.0
-        Dim dblTotalPaid As Double = 0.0
-        Dim dblMonthlyInterestRate As Double = (dblInterestRate / 12)
+        decInterestRate = decInterestRate / 100
+        Dim decMonthlyPayment As Decimal
+        Dim decInterestPaid As Decimal
+        Dim decTotalPaid As Decimal
+        Dim decMonthlyInterestRate As Decimal = (decInterestRate / 12)
         Dim intMonths As Integer = intMortgageTerm * 12
-        Dim dblBalance As Double
-        dblLoanAmount = (dblLoanAmount + dblLoanFees) - (dblLoanAmount * dblDownPaymentPercent)
+        Dim decBalance As Decimal
+        decLoanAmount = (decLoanAmount + decLoanFees)
         For i As Integer = 1 To intMonths
-            dblMonthlyPayment = dblLoanAmount * (dblMonthlyInterestRate * (1 + dblMonthlyInterestRate) ^ intMonths) / ((1 + dblMonthlyInterestRate) ^ intMonths - 1)
-            dblBalance = dblLoanAmount * (dblMonthlyInterestRate * (((1 + dblMonthlyInterestRate) ^ intMonths) - (1 + dblMonthlyInterestRate) ^ dblMonthlyPayment)) / ((1 + dblMonthlyInterestRate) ^ intMonths - 1)
-            dblInterestPaid = dblLoanAmount * dblMonthlyInterestRate
+            decMonthlyPayment = decLoanAmount * (decMonthlyInterestRate * (1 + decMonthlyInterestRate) ^ intMonths) / ((1 + decMonthlyInterestRate) ^ intMonths - 1)
+            decBalance = decLoanAmount * (decMonthlyInterestRate * (((1 + decMonthlyInterestRate) ^ intMonths) - (1 + decMonthlyInterestRate) ^ decMonthlyPayment)) / ((1 + decMonthlyInterestRate) ^ intMonths - 1)
+            decInterestPaid = decLoanAmount * decMonthlyInterestRate
             Dim strMonthInfo(5) As String
             strMonthInfo(0) = i.ToString
-            strMonthInfo(1) = dblLoanAmount
-            strMonthInfo(2) = dblInterestPaid
-            strMonthInfo(3) = dblMonthlyPayment
-            strMonthInfo(4) = dblBalance
+            strMonthInfo(1) = FormatNumber(decLoanAmount, 2)
+            strMonthInfo(2) = FormatNumber(decInterestPaid, 2)
+            strMonthInfo(3) = FormatNumber(decMonthlyPayment, 2)
+            strMonthInfo(4) = FormatNumber(decBalance, 2)
             lsvMonthlySchedule.Items.Add(New ListViewItem(strMonthInfo))
-            dblLoanAmount = dblBalance
+            decLoanAmount = decBalance
         Next
     End Sub
 End Class
