@@ -73,11 +73,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="financialWIzard.vb">
+    <Compile Include="frmMortgageCalculator.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="financialWIzard.Designer.vb">
-      <DependentUpon>financialWIzard.vb</DependentUpon>
+    <Compile Include="frmMortgageCalculator.Designer.vb">
+      <DependentUpon>frmMortgageCalculator.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -97,8 +97,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="financialWIzard.resx">
-      <DependentUpon>financialWIzard.vb</DependentUpon>
+    <EmbeddedResource Include="frmMortgageCalculator.resx">
+      <DependentUpon>frmMortgageCalculator.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -118,6 +118,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MortgageCalculatorIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
