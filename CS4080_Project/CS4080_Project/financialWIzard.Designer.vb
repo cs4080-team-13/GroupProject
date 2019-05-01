@@ -27,12 +27,6 @@ Partial Class frmFinanceWizard
         Me.tlpButtons = New System.Windows.Forms.TableLayoutPanel()
         Me.scMain = New System.Windows.Forms.SplitContainer()
         Me.panelMortgageCalc = New System.Windows.Forms.Panel()
-        Me.lsvMonthlySchedule = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnCalculate = New System.Windows.Forms.Button()
         Me.cbMortgageTerm = New System.Windows.Forms.ComboBox()
         Me.txtbxAnnualInterest = New System.Windows.Forms.TextBox()
@@ -45,6 +39,12 @@ Partial Class frmFinanceWizard
         Me.lblLoanAmount = New System.Windows.Forms.Label()
         Me.panelExpenseTracker = New System.Windows.Forms.Panel()
         Me.lbExpenseTracker = New System.Windows.Forms.Label()
+        Me.lsvSchedule = New System.Windows.Forms.ListView()
+        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.tlpButtons.SuspendLayout()
         CType(Me.scMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.scMain.Panel1.SuspendLayout()
@@ -107,14 +107,14 @@ Partial Class frmFinanceWizard
         '
         Me.scMain.Panel2.Controls.Add(Me.panelMortgageCalc)
         Me.scMain.Panel2.Controls.Add(Me.panelExpenseTracker)
-        Me.scMain.Size = New System.Drawing.Size(884, 661)
-        Me.scMain.SplitterDistance = 109
+        Me.scMain.Size = New System.Drawing.Size(1084, 661)
+        Me.scMain.SplitterDistance = 133
         Me.scMain.TabIndex = 2
         '
         'panelMortgageCalc
         '
         Me.panelMortgageCalc.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.panelMortgageCalc.Controls.Add(Me.lsvMonthlySchedule)
+        Me.panelMortgageCalc.Controls.Add(Me.lsvSchedule)
         Me.panelMortgageCalc.Controls.Add(Me.btnCalculate)
         Me.panelMortgageCalc.Controls.Add(Me.cbMortgageTerm)
         Me.panelMortgageCalc.Controls.Add(Me.txtbxAnnualInterest)
@@ -128,46 +128,8 @@ Partial Class frmFinanceWizard
         Me.panelMortgageCalc.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelMortgageCalc.Location = New System.Drawing.Point(0, 0)
         Me.panelMortgageCalc.Name = "panelMortgageCalc"
-        Me.panelMortgageCalc.Size = New System.Drawing.Size(771, 661)
+        Me.panelMortgageCalc.Size = New System.Drawing.Size(947, 661)
         Me.panelMortgageCalc.TabIndex = 3
-        '
-        'lsvMonthlySchedule
-        '
-        Me.lsvMonthlySchedule.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lsvMonthlySchedule.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
-        Me.lsvMonthlySchedule.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lsvMonthlySchedule.ForeColor = System.Drawing.Color.White
-        Me.lsvMonthlySchedule.Location = New System.Drawing.Point(187, 55)
-        Me.lsvMonthlySchedule.Name = "lsvMonthlySchedule"
-        Me.lsvMonthlySchedule.Size = New System.Drawing.Size(556, 505)
-        Me.lsvMonthlySchedule.TabIndex = 6
-        Me.lsvMonthlySchedule.UseCompatibleStateImageBehavior = False
-        Me.lsvMonthlySchedule.View = System.Windows.Forms.View.Details
-        '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.Text = "Months"
-        Me.ColumnHeader1.Width = 73
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "Starting Balance"
-        Me.ColumnHeader2.Width = 134
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.Text = "Interest"
-        Me.ColumnHeader3.Width = 110
-        '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "Payment"
-        Me.ColumnHeader4.Width = 125
-        '
-        'ColumnHeader5
-        '
-        Me.ColumnHeader5.Text = "Balance"
-        Me.ColumnHeader5.Width = 110
         '
         'btnCalculate
         '
@@ -281,7 +243,7 @@ Partial Class frmFinanceWizard
         Me.panelExpenseTracker.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelExpenseTracker.Location = New System.Drawing.Point(0, 0)
         Me.panelExpenseTracker.Name = "panelExpenseTracker"
-        Me.panelExpenseTracker.Size = New System.Drawing.Size(771, 661)
+        Me.panelExpenseTracker.Size = New System.Drawing.Size(947, 661)
         Me.panelExpenseTracker.TabIndex = 1
         '
         'lbExpenseTracker
@@ -295,12 +257,49 @@ Partial Class frmFinanceWizard
         Me.lbExpenseTracker.TabIndex = 0
         Me.lbExpenseTracker.Text = "Expense Tracker"
         '
+        'lsvSchedule
+        '
+        Me.lsvSchedule.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lsvSchedule.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader10})
+        Me.lsvSchedule.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lsvSchedule.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.lsvSchedule.Location = New System.Drawing.Point(188, 44)
+        Me.lsvSchedule.Name = "lsvSchedule"
+        Me.lsvSchedule.Size = New System.Drawing.Size(618, 521)
+        Me.lsvSchedule.TabIndex = 7
+        Me.lsvSchedule.UseCompatibleStateImageBehavior = False
+        Me.lsvSchedule.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader6
+        '
+        Me.ColumnHeader6.Text = "Month"
+        '
+        'ColumnHeader7
+        '
+        Me.ColumnHeader7.Text = "Starting Balance"
+        Me.ColumnHeader7.Width = 154
+        '
+        'ColumnHeader8
+        '
+        Me.ColumnHeader8.Text = "Interest"
+        Me.ColumnHeader8.Width = 112
+        '
+        'ColumnHeader9
+        '
+        Me.ColumnHeader9.Text = "Monthly Payment"
+        Me.ColumnHeader9.Width = 157
+        '
+        'ColumnHeader10
+        '
+        Me.ColumnHeader10.Text = "Balance"
+        Me.ColumnHeader10.Width = 131
+        '
         'frmFinanceWizard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DimGray
-        Me.ClientSize = New System.Drawing.Size(884, 661)
+        Me.ClientSize = New System.Drawing.Size(1084, 661)
         Me.Controls.Add(Me.scMain)
         Me.Name = "frmFinanceWizard"
         Me.Text = "Finance Wizard"
@@ -332,11 +331,11 @@ Partial Class frmFinanceWizard
     Friend WithEvents cbMortgageTerm As ComboBox
     Friend WithEvents lbExpenseTracker As Label
     Friend WithEvents btnCalculate As Button
-    Friend WithEvents lsvMonthlySchedule As ListView
-    Friend WithEvents ColumnHeader1 As ColumnHeader
-    Friend WithEvents ColumnHeader2 As ColumnHeader
-    Friend WithEvents ColumnHeader3 As ColumnHeader
-    Friend WithEvents ColumnHeader4 As ColumnHeader
-    Friend WithEvents ColumnHeader5 As ColumnHeader
     Friend WithEvents lblPaymentSchedule As Label
+    Friend WithEvents lsvSchedule As ListView
+    Friend WithEvents ColumnHeader6 As ColumnHeader
+    Friend WithEvents ColumnHeader7 As ColumnHeader
+    Friend WithEvents ColumnHeader8 As ColumnHeader
+    Friend WithEvents ColumnHeader9 As ColumnHeader
+    Friend WithEvents ColumnHeader10 As ColumnHeader
 End Class

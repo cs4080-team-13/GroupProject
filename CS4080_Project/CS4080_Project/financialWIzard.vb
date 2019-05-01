@@ -18,7 +18,6 @@
 
     'Calculates the number mortgage payment amount per month for a specified loan amount, annual interest rate, and mortgage term
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
-        lsvMonthlySchedule.Clear()
         Try
             decLoanAmount = Decimal.Parse(txtbxLoanAmount.Text)
             decLoanFees = Double.Parse(txtbxLoanFees.Text)
@@ -35,27 +34,30 @@
         Dim intMonths As Integer = intMortgageTerm * 12
         Dim decBalance As Decimal = decLoanAmount + decLoanFees
         'Calulate the monthly payment, it only needs to be calculated once
-        decMonthlyPayment = calcMonthlyPayment(decMonthlyInterestRate, intMonths)
+        decMonthlyPayment = calcMonthlyPayment(decBalance, decMonthlyInterestRate, intMonths)
         For i As Integer = 1 To intMonths
             'Calculate the interest for month i
             decMonthlyInterest = Math.Round((decBalance * decMonthlyInterestRate), 2)
             'Create an array of strings to be added to the ListView
-            Dim strMonthInfo(5) As String
+            Dim strMonthInfo(4) As String
             strMonthInfo(0) = i.ToString
             strMonthInfo(1) = FormatNumber(decBalance, 2)
             strMonthInfo(2) = FormatNumber(decMonthlyInterest, 2)
             strMonthInfo(3) = FormatNumber(decMonthlyPayment, 2)
             'Calculate the remaining balance
-            decBalance = calcBalance(decBalance, decMonthlyInterest)
+            decBalance = calcBalance(decBalance, decMonthlyInterestRate, decMonthlyPayment, intMonths - i)
             strMonthInfo(4) = FormatNumber(decBalance, 2)
+            'Dim lsvi As ListViewItem = New ListViewItem(strMonthInfo)
             'Pass the string to the ListView item
-            lsvMonthlySchedule.Items.Add(New ListViewItem(strMonthInfo))
+            lsvSchedule.Items.Add(New ListViewItem(strMonthInfo))
         Next
     End Sub
-    Private Function calcMonthlyPayment(ByVal decMIR As Decimal, ByVal intM As Integer) As Decimal
-        Return Math.Round((decLoanAmount * (decMIR * (1 + decMIR) ^ intM) / (((1 + decMIR) ^ intM) - 1)), 2)
+    Private Function calcMonthlyPayment(ByVal decBal As Decimal, ByVal decMIR As Decimal, ByVal intM As Integer) As Decimal
+        'Return Math.Round((decLoanAmount * (decMIR * (1 + decMIR) ^ intM) / (((1 + decMIR) ^ intM) - 1)), 2)
+        Return Math.Round((decBal * decMIR) / (1 - (1 + decMIR) ^ (-intM)), 2)
     End Function
-    Private Function calcBalance(ByVal decBal As Decimal, ByVal decMI As Decimal) As Decimal
-        Return Math.Round((decBal - (decMonthlyPayment - decMI)))
+    Private Function calcBalance(ByVal decBal As Decimal, ByVal decMIR As Decimal, ByVal decMP As Decimal, ByVal intMR As Integer) As Decimal
+        'Return Math.Round((decBal - (decMonthlyPayment - decMI)))
+        Return Math.Round((decMP * (1 - (1 + decMIR) ^ (-intMR))) / decMIR, 2)
     End Function
 End Class
