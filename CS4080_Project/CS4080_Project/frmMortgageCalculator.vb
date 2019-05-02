@@ -23,6 +23,9 @@ Public Class frmCSMoney
     'Calculates the number mortgage payment amount per month for a specified loan amount, annual interest rate, and mortgage term
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
         'Get all the data from the user
+        Do While (lsvSchedule.Items.Count > 0)
+            lsvSchedule.Items.Remove(lsvSchedule.Items(0))
+        Loop
         Try
             decLoanAmount = Decimal.Parse(txtbxLoanAmount.Text)
             decLoanFees = Double.Parse(txtbxLoanFees.Text)
@@ -65,14 +68,14 @@ Public Class frmCSMoney
         lblInterestPaidAmnt.Text = "$" + FormatNumber(decInterestPaid, 2)
     End Sub
     'Calculates the Monthly Payment
-    Private Function calcMonthlyPayment(ByVal decBal As Decimal, ByVal decMIR As Decimal, ByVal intM As Integer) As Decimal
-        'Return Math.Round((decLoanAmount * (decMIR * (1 + decMIR) ^ intM) / (((1 + decMIR) ^ intM) - 1)), 2)
+    Private Function calcMonthlyPayment(ByVal decBal As Decimal,
+        ByVal decMIR As Decimal, ByVal intM As Integer) As Decimal
         Return Math.Round((decBal * decMIR) / (1 - (1 + decMIR) ^ (-intM)), 2)
     End Function
 
     'Calculates the Balance after a payment has been made
-    Private Function calcBalance(ByVal decBal As Decimal, ByVal decMIR As Decimal, ByVal decMP As Decimal, ByVal intMR As Integer) As Decimal
-        'Return Math.Round((decBal - (decMonthlyPayment - decMI)))
+    Private Function calcBalance(ByVal decBal As Decimal,
+        ByVal decMIR As Decimal, ByVal decMP As Decimal, ByVal intMR As Integer) As Decimal
         Return Math.Round((decMP * (1 - (1 + decMIR) ^ (-intMR))) / decMIR, 2)
     End Function
 
@@ -104,11 +107,7 @@ Public Class frmCSMoney
         Dim intCadDollarPriceStart As Integer = Json.IndexOf(",""CAD_USD"":") + 11
         Dim intAusDollarPriceStart As Integer = Json.IndexOf(",""AUD_USD"":") + 11
         Dim intEnd = Json.IndexOf("}")
-        ' Get each value by taking substring, not ideal '
-        'Dim Euro As String = Json.Substring(11, 4)
-        'Dim Pound As String = Json.Substring(30, 4)
-        'Dim CadDollar As String = Json.Substring(49, 4)
-        'Dim AusDollar As String = Json.Substring(68, 4)
+
         Dim Euro As String = Json.Substring(intEuroPriceStart, intPoundPriceStart - intEuroPriceStart - 11)
         Dim Pound As String = Json.Substring(intPoundPriceStart, intCadDollarPriceStart - intPoundPriceStart - 11)
         Dim CadDollar As String = Json.Substring(intCadDollarPriceStart, intAusDollarPriceStart - intCadDollarPriceStart - 11)

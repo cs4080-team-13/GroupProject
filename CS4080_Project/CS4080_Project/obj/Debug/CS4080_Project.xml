@@ -32,6 +32,16 @@ CS4080_Project
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:CS4080_Project.My.Resources.Resources.CurrencyRateIcon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:CS4080_Project.My.Resources.Resources.CurrencyRateIcon1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:CS4080_Project.My.Resources.Resources.EUFlag">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
