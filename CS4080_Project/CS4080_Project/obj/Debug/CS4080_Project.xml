@@ -22,6 +22,26 @@ CS4080_Project
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:CS4080_Project.My.Resources.Resources.AUFlag">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:CS4080_Project.My.Resources.Resources.CADFlag">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:CS4080_Project.My.Resources.Resources.EUFlag">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:CS4080_Project.My.Resources.Resources.GBFlag">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:CS4080_Project.My.Resources.Resources.MortgageCalculatorIcon">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

@@ -122,5 +122,23 @@
   <ItemGroup>
     <None Include="Resources\MortgageCalculatorIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EUFlag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GBFlag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CADFlag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AUFlag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CurrencyRateIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CurrencyRateIcon1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

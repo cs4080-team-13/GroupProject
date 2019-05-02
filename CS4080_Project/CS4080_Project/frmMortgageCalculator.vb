@@ -1,4 +1,8 @@
-﻿Public Class frmMortgageCalculator
+﻿Imports System
+Imports System.Net
+Imports System.IO
+
+Public Class frmCSMoney
     Private decMonthlyPayment As Decimal
     Private decLoanAmount As Decimal
     Private decLoanFees As Decimal
@@ -6,13 +10,13 @@
 
     Dim intMortgageTerm As Integer
 
-    Private Sub btnExpense_Click(sender As Object, e As EventArgs) Handles btnExpense.Click
-        panelExpenseTracker.Visible = True
+    Private Sub btnCurrency_Click(sender As Object, e As EventArgs) Handles btnCurrency.Click
+        panelCurrency.Visible = True
         panelMortgageCalc.Visible = False
     End Sub
 
     Private Sub btnMortgage_Click(sender As Object, e As EventArgs) Handles btnMortgage.Click
-        panelExpenseTracker.Visible = False
+        panelCurrency.Visible = False
         panelMortgageCalc.Visible = True
     End Sub
 
@@ -71,4 +75,57 @@
         'Return Math.Round((decBal - (decMonthlyPayment - decMI)))
         Return Math.Round((decMP * (1 - (1 + decMIR) ^ (-intMR))) / decMIR, 2)
     End Function
+
+    Private Sub Request_Currency_Data()
+        ' Define endpoint '
+        Const API_KEY As String = "e97c84d09749879bd229"
+        Dim Url As String = "https://free.currconv.com/api/v7/convert?q=EUR_USD,GBP_USD,CAD_USD,AUD_USD&compact=ultra&apiKey=" & API_KEY
+        ' Create request and stream '
+        Dim Req As WebRequest = WebRequest.Create(Url)
+        Dim Stream As Stream = Req.GetResponse.GetResponseStream()
+        ' Create stream reader helper vars ' 
+        Dim Reader As New StreamReader(Stream)
+        Dim Line As String = ""
+        Dim Json As String = ""
+        ' Read stream line by line and concat json string '
+        Do While Not Line Is Nothing
+            Line = Reader.ReadLine
+            If Not Line Is Nothing Then
+                Json = Json & Line
+            End If
+        Loop
+        ' Update view '
+        Update_Currencies_From_JSON(Json)
+    End Sub
+
+    Private Sub Update_Currencies_From_JSON(Json As String)
+        Dim intEuroPriceStart As Integer = Json.IndexOf("""EUR_USD"":") + 10
+        Dim intPoundPriceStart As Integer = Json.IndexOf(",""GBP_USD"":") + 11
+        Dim intCadDollarPriceStart As Integer = Json.IndexOf(",""CAD_USD"":") + 11
+        Dim intAusDollarPriceStart As Integer = Json.IndexOf(",""AUD_USD"":") + 11
+        Dim intEnd = Json.IndexOf("}")
+        ' Get each value by taking substring, not ideal '
+        'Dim Euro As String = Json.Substring(11, 4)
+        'Dim Pound As String = Json.Substring(30, 4)
+        'Dim CadDollar As String = Json.Substring(49, 4)
+        'Dim AusDollar As String = Json.Substring(68, 4)
+        Dim Euro As String = Json.Substring(intEuroPriceStart, intPoundPriceStart - intEuroPriceStart - 11)
+        Dim Pound As String = Json.Substring(intPoundPriceStart, intCadDollarPriceStart - intPoundPriceStart - 11)
+        Dim CadDollar As String = Json.Substring(intCadDollarPriceStart, intAusDollarPriceStart - intCadDollarPriceStart - 11)
+        Dim AusDollar As String = Json.Substring(intAusDollarPriceStart, intEnd - intAusDollarPriceStart)
+        ' Update Labels
+        lblEURUSDPrice.Text = "$" + Euro
+        lblGBPUSDPrice.Text = "$" + Pound
+        lblCADUSDPrice.Text = "$" + CadDollar
+        lblAUDUSDPrice.Text = "$" + AusDollar
+    End Sub
+
+    Private Sub frmMortgageCalculator_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        panelCurrency.Visible = False
+        panelMortgageCalc.Visible = True
+    End Sub
+
+    Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
+        Request_Currency_Data()
+    End Sub
 End Class
