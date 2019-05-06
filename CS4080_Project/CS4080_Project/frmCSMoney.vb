@@ -1,7 +1,11 @@
 ﻿Imports System
 Imports System.Net
 Imports System.IO
-
+' CS 4080 Concepts of Programming Languages
+' Team 13 Visual Basic
+' Fadhar Castillo
+' Shayna Stewart
+' Wojciech Cichoradzki
 Public Class frmCSMoney
     Private decMonthlyPayment As Decimal
     Private decLoanAmount As Decimal

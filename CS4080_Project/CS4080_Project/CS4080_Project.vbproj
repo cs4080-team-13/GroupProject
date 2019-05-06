@@ -73,11 +73,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmMortgageCalculator.vb">
+    <Compile Include="frmCSMoney.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMortgageCalculator.Designer.vb">
-      <DependentUpon>frmMortgageCalculator.vb</DependentUpon>
+    <Compile Include="frmCSMoney.Designer.vb">
+      <DependentUpon>frmCSMoney.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -97,8 +97,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmMortgageCalculator.resx">
-      <DependentUpon>frmMortgageCalculator.vb</DependentUpon>
+    <EmbeddedResource Include="frmCSMoney.resx">
+      <DependentUpon>frmCSMoney.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
